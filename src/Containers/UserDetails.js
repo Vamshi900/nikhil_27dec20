@@ -1,6 +1,5 @@
 import React from 'react';
 import Form from '../components/Form';
-import Debug from '../utils/Debug';
 import { validate } from '../utils/helper';
 
 

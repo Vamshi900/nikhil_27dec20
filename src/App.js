@@ -30,8 +30,3 @@ export default function App() {
     </div>
   );
 }
-
-
-function About() {
-  return <h2>About</h2>;
-}

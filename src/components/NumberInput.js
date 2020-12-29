@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 
 const NumberInput = ({ intialValue, handleChange }) => {
     const [phone, setPhone] = useState(intialValue);
