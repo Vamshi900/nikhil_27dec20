@@ -16,7 +16,7 @@ function getData(num) {
 export const tableSlice = createSlice({
   name: 'tableData',
   initialState: {
-    users: getData(200),
+    users: getData(20),
   },
   reducers: {
     removeUser: (state, action) => {

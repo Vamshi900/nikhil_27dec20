@@ -19,6 +19,7 @@ export const columns = [
         name: 'locations',
         displayName: 'Locations'
     },
+    
 ]
 
 export const checkboxes = [

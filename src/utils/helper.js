@@ -25,20 +25,8 @@ export const emailValidation = email => {
     return 'Please enter a valid email';
 };
 
-export const ageValidation = age => {
-    if (!age) {
-        return 'Age is required';
-    }
-    if (age < 18) {
-        return 'Age must be at least 18';
-    }
-    if (age > 99) {
-        return 'Age must be under 99';
-    }
-    return null;
-};
 export const genderValidation = gender => {
-    if (!gender || gender === '' || gender === 'Select') {
+    if (!gender || gender === '' || gender === 'select') {
         return 'Gender is required';
     }
     return null;
@@ -53,9 +41,7 @@ export const locationValidation = locations => {
 export const validate = {
     name: name => nameValidation('Name', name),
     email: emailValidation,
-    age: ageValidation,
     gender: genderValidation,
     locations: locationValidation,
-
 };
 

@@ -6,29 +6,7 @@ import {
     removeUser
 } from '../reducers/tableSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
-
-const Row = ({ id, name, phone, email, gender, locations, remove }) => {
-    const history = useHistory();
-    const handleClick = (id) => history.push(`/editUser/${id}`);
-    return <div className="row" id={id}>
-
-        <div>{name}</div>
-        <div>{phone}</div>
-        <div>{email}</div>
-        <div>{gender}</div>
-        <div>{locations}</div>
-        <div className="remove">
-            <a href="#" onClick={() => handleClick(id)}>Edit</a>
-        </div>
-        <div className="remove">
-            <a href="#" onClick={() => remove(id)}>X</a>
-        </div>
-    </div>
-};
-
-
+import TableRow from './TableRow';
 
 const getHeader = (columns) => {
     const data = columns.map((column) => {
@@ -38,7 +16,7 @@ const getHeader = (columns) => {
 }
 
 const getRows = (rows, remove) => {
-    return rows ? rows.map((rowData) => <Row remove={remove} {...rowData} />) : [];
+    return rows ? rows.map((rowData) => <TableRow remove={remove} {...rowData} />) : [];
 }
 
 
