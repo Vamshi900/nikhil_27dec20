@@ -79,7 +79,7 @@ function Form({
                         Preffered Locations *
                         <div>
 
-                            <CheckBoxContainer handleChange={handleChange} intialValue={values.locations} />
+                            <CheckBoxContainer handleToggle={handleChange} intialValue={values.locations} />
 
                         </div>
                         {touched.locations && errors.locations}

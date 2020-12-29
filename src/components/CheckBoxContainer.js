@@ -1,22 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Checkbox from '../components/CheckBox';
 
 import { checkboxes } from '../utils/constants';
 
-class CheckboxContainer extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            checkedItems: new Map(),
-            location: props.intialValue,
-        }
+const CheckboxContainer = ({ intialValue = '', handleToggle }) => {
+    const [checkedItems, setCheckedItems] = useState(new Map())
+    const [preferedLocation, setPreferedLocation] = useState(intialValue)
 
-        // this.handleChange = this.handleChange.bind(this);
-    }
-    getUpdateLocation = (item, isChecked) => {
-        let locations = this.state.location;
+     const getUpdateLocation = (item, isChecked) => {
+        let locations = preferedLocation;
 
         if (isChecked) {
             if (!locations.includes(item)) {
@@ -25,8 +19,8 @@ class CheckboxContainer extends React.Component {
         } else {
             if (locations.includes(item)) {
                 let newLocations = '';
-                if (this.state.checkedItems.size > 0) {
-                    for (const [key, value] of this.state.checkedItems.entries()) {
+                if (checkedItems.size > 0) {
+                    for (const [key, value] of checkedItems.entries()) {
                         if (value && newLocations === '' && key !== item) {
                             newLocations += key;
                         } else if (value) {
@@ -40,33 +34,29 @@ class CheckboxContainer extends React.Component {
         }
         return locations
     }
-    handleChange = (e) => {
+    const  handleChange = (e) => {
         const item = e.target.name;
         const isChecked = e.target.checked;
-        console.log(this.state);
-        const locations = this.getUpdateLocation(item, isChecked);
-
-
-        this.setState(prevState => {
-            return { checkedItems: prevState.checkedItems.set(item, isChecked), location: locations }
-        });
-        this.props.handleChange({ target: { name: 'locations', value: locations, type: 'locations' } })
+        const locations = getUpdateLocation(item, isChecked);
+        const newCheckeditems = checkedItems.set(item, isChecked);
+        setCheckedItems(newCheckeditems);
+        setPreferedLocation(locations);
+        handleToggle({ target: { name: 'locations', value: locations, type: 'locations' } })
     }
 
-    render() {
-        return (
-            <React.Fragment>
-                {
-                    checkboxes.map(item => (
-                        <label key={item.key}>
-                            {item.name}
-                            <Checkbox name={item.name} checked={this.state.checkedItems.get(item.name)} onChange={this.handleChange} />
-                        </label>
-                    ))
-                }
-            </React.Fragment>
-        );
-    }
+    return (
+        <React.Fragment>
+            {
+                checkboxes.map(item => (
+                    <label key={item.key}>
+                        {item.name}
+                        <Checkbox name={item.name} checked={checkedItems.get(item.name)} onChange={handleChange} />
+                    </label>
+                ))
+            }
+        </React.Fragment>
+    );
+
 }
 
 export default CheckboxContainer;
