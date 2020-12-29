@@ -16,11 +16,11 @@ const EditUserForm = ({ match }) => {
     const users = useSelector(selectUsers);
     const dispatch = useDispatch();
     const getUser = () => {
-        return users.filter((user) => user.id == userId)[0]
+        return users.filter((user) => user.id === Number(userId))[0]
     }
 
     const handleFormSubmit = (updatedUser) => {
-        const index = users.findIndex((user) => user.id == userId)
+        const index = users.findIndex((user) => user.id === Number(userId))
         const updatedUsers = [...users];
         updatedUsers[index] = updatedUser;
         dispatch(updateUser(updatedUsers))
