@@ -56,18 +56,23 @@ function UserDetails({ initialValues, handleFormSubmit }) {
     // validate the form
     const formValidation = Object.keys(values).reduce(
       (acc, key) => {
-        const newError = validate[key](values[key]);
-        const newTouched = { [key]: true };
-        return {
-          errors: {
-            ...acc.errors,
-            ...(newError && { [key]: newError }),
-          },
-          touched: {
-            ...acc.touched,
-            ...newTouched,
-          },
-        };
+        if (validate[key]) {
+          const newError = validate[key](values[key]);
+          const newTouched = { [key]: true };
+          return {
+            errors: {
+              ...acc.errors,
+              ...(newError && { [key]: newError }),
+            },
+            touched: {
+              ...acc.touched,
+              ...newTouched,
+            },
+          };
+        }else{
+          return acc;
+        }
+
       },
       {
         errors: { ...errors },
@@ -87,7 +92,7 @@ function UserDetails({ initialValues, handleFormSubmit }) {
       handleFormSubmit(values);
     }
   };
-   console.log(values);
+  console.log(values);
   return (
     <>
       <Form
