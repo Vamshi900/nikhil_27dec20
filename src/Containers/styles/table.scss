@@ -26,9 +26,10 @@
           font-weight: 300;
           flex: 0 0 80px;
           
-          a {
+          span {
             text-decoration: none;
             color: blueviolet;
+            cursor: pointer;
           }
         }
       }

@@ -21,7 +21,6 @@ const NumberInput = ({ intialValue, handleChange }) => {
                 placeholder="Enter Phone Number"
                 value={phone}
                 onChange={handleValuechange}
-                name="phone"
             />
         </>
     );
