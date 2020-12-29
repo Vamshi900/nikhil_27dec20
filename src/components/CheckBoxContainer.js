@@ -10,7 +10,7 @@ class CheckboxContainer extends React.Component {
 
         this.state = {
             checkedItems: new Map(),
-            location: props.locations,
+            location: props.intialValue,
         }
 
         // this.handleChange = this.handleChange.bind(this);
