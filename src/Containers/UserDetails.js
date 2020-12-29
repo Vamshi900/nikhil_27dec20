@@ -5,7 +5,7 @@ import { validate } from '../utils/helper';
 
 
 function UserDetails({ initialValues, handleFormSubmit }) {
- 
+
   const [values, setValues] = React.useState(initialValues);
 
   const [errors, setErrors] = React.useState({});
@@ -18,6 +18,20 @@ function UserDetails({ initialValues, handleFormSubmit }) {
 
     // keep number fields as numbers
     const value = type === 'number' ? +newValue : newValue;
+
+    if (validate[name]) {
+      const { [name]: removedError, ...rest } = errors;
+
+      // check for a new error
+      const error = validate[name](value);
+
+      // // validate the field if the value has been touched
+      setErrors({
+        ...rest,
+        ...(error && { [name]: touched[name] && error }),
+      });
+    }
+
 
     // save field values
     setValues({
@@ -80,6 +94,7 @@ function UserDetails({ initialValues, handleFormSubmit }) {
     );
     setErrors(formValidation.errors);
     setTouched(formValidation.touched);
+    console.log(formValidation)
 
     if (
       !Object.values(formValidation.errors).length && // errors object is empty
