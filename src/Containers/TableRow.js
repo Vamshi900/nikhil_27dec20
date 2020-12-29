@@ -12,11 +12,11 @@ const TableRow = ({ id, name, phone, email, gender, locations, remove }) => {
         <div>{email}</div>
         <div>{gender}</div>
         <div>{locations}</div>
-        <div>
+        <div className="remove">
 
         <a href="#" onClick={() => handleClick(id)}>Edit</a>
         </div>
-        <div>
+        <div className="remove">
 
         <a href="#" onClick={() => remove(id)}>X</a>
         </div>
