@@ -5,9 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-
 import Home from './Containers/Home';
-// import UserDetails from './Containers/UserForm';
 import UserForm from './Containers/NewUserForm';
 import EditUserForm from './Containers/EditUserForm';
 
