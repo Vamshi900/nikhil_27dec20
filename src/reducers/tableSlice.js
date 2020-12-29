@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 function createData(id, randomSelection) {
-  return { id, name: `Task 403 ${randomSelection}`, phone: '9000202161' + randomSelection, email: 'abcd@gamil.com', gender: 'male', locations: 'hyd,abcd,acd' };
+  return { id, name: `Task 403 ${randomSelection}`, phone: '9000202161' + randomSelection, email: 'abcd@gamil.com', gender: 'male', locations: 'Delhi,Mumbai' };
 }
 
 function getData(num) {

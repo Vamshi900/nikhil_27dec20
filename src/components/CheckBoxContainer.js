@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Checkbox from '../components/CheckBox';
 
 import { checkboxes } from '../utils/constants';
+import { initialValues } from '../Containers/NewUserForm';
 
 
 const CheckboxContainer = ({ intialValue = '', handleToggle }) => {
-    const [checkedItems, setCheckedItems] = useState(new Map())
     const [preferedLocation, setPreferedLocation] = useState(intialValue)
 
-     const getUpdateLocation = (item, isChecked) => {
+    const getIntialChecked = () => {
+        let checkedItems = new Map();
+        if (intialValue !== '') {
+            const toSet = preferedLocation.split(',');
+            toSet.forEach(element => {
+                checkedItems.set(element, true)
+            });
+        }
+
+        return checkedItems;
+    }
+    const [checkedItems, setCheckedItems] = useState(getIntialChecked())
+
+    // useEffect(() => {
+    //     let checkedItems = new Map();
+    //     if (intialValue !== '') {
+    //         const toSet = preferedLocation.split(',');
+    //         toSet.forEach(element => {
+    //             checkedItems.set(element, true)
+    //         });
+    //     }
+
+    //     return checkedItems
+    // }, [])
+
+
+    const getUpdateLocation = (item, isChecked) => {
         let locations = preferedLocation;
 
         if (isChecked) {
@@ -34,15 +60,17 @@ const CheckboxContainer = ({ intialValue = '', handleToggle }) => {
         }
         return locations
     }
-    const  handleChange = (e) => {
+    const handleChange = (e) => {
         const item = e.target.name;
         const isChecked = e.target.checked;
         const locations = getUpdateLocation(item, isChecked);
         const newCheckeditems = checkedItems.set(item, isChecked);
+        console.log(newCheckeditems);
         setCheckedItems(newCheckeditems);
         setPreferedLocation(locations);
         handleToggle({ target: { name: 'locations', value: locations, type: 'locations' } })
     }
+    console.log(checkedItems);
 
     return (
         <React.Fragment>
