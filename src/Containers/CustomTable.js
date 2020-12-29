@@ -10,7 +10,7 @@ import TableRow from './TableRow';
 
 const getHeader = (columns) => {
     const data = columns.map((column) => {
-        return <div id={column.name}>{column.displayName}</div>
+        return <div key={column.name} id={column.name}>{column.displayName}</div>
     })
     return data;
 }

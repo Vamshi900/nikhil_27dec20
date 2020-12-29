@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 const TableRow = ({ id, name, phone, email, gender, locations, remove }) => {
     const history = useHistory();
     const handleClick = (id) => history.push(`/editUser/${id}`);
-    return <div className="row" id={id}>
+    return <div className="row"  key={id}>
 
         <div>{name}</div>
         <div>{phone}</div>
@@ -20,13 +20,6 @@ const TableRow = ({ id, name, phone, email, gender, locations, remove }) => {
 
         <a href="#" onClick={() => remove(id)}>X</a>
         </div>
-
-        {/* <div className="remove">
-            <a href="#" onClick={() => handleClick(id)}>Edit</a>
-        </div>
-        <div className="remove">
-            <a href="#" onClick={() => remove(id)}>X</a>
-        </div> */}
     </div>
 };
 
