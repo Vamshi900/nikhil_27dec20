@@ -10,7 +10,6 @@ function Form({
     touched,
     values,
 }) {
-    console.log(values);
     return (
         <div>
 

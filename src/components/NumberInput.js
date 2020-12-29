@@ -3,9 +3,7 @@ import React, { Component, useState } from 'react';
 const NumberInput = ({ intialValue, handleChange }) => {
     const [phone, setPhone] = useState(intialValue);
     const handleValuechange = (e) => {
-        console.log(e.target.value);
         const phone = e.target.value;
-        console.log((Number(phone) === NaN));
         if (!Number(phone) || phone.length > 10) {
             return;
         }

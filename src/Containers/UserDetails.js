@@ -5,8 +5,7 @@ import { validate } from '../utils/helper';
 
 
 function UserDetails({ initialValues, handleFormSubmit }) {
-  console.log(initialValues);
-  console.log(handleFormSubmit);
+ 
   const [values, setValues] = React.useState(initialValues);
 
   const [errors, setErrors] = React.useState({});
@@ -91,7 +90,6 @@ function UserDetails({ initialValues, handleFormSubmit }) {
       handleFormSubmit(values);
     }
   };
-  console.log(values);
   return (
     <>
       <Form
