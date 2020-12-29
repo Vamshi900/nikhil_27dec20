@@ -6,10 +6,12 @@ import {
 } from '../reducers/tableSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { useHistory } from 'react-router-dom';
 
 
 
 const EditUserForm = ({ match }) => {
+    const history = useHistory();
     const { params: { userId } } = match;
     console.log(userId);
     const users = useSelector(selectUsers);
@@ -17,13 +19,13 @@ const EditUserForm = ({ match }) => {
     const getUser = () => {
         return users.filter((user) => user.id == userId)[0]
     }
-    const handleFormSubmit = (updateUser) => {
-        console.log(updateUser);
-        let currentUser = getUser()
-        currentUser = { ...currentUser, ...updateUser }
-        console.log(currentUser);
-        const updatedUsers = [...users];
 
+    const handleFormSubmit = (updatedUser) => {
+        const index = users.findIndex((user) => user.id == userId)
+        const updatedUsers = [...users];
+        updatedUsers[index] = updatedUser;
+        dispatch(updateUser(updatedUsers))
+        history.push('/');
     }
     const currentUser = getUser();
     return currentUser ? <>

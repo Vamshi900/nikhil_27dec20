@@ -24,6 +24,7 @@ const NewUserForm = () => {
         const updatedUsers = [...users];
         updatedUsers.push(newUser)
         dispatch(addUser(updatedUsers));
+        history.push('/');
     }
     return <>
         <h2>Add User</h2>

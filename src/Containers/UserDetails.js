@@ -69,7 +69,7 @@ function UserDetails({ initialValues, handleFormSubmit }) {
               ...newTouched,
             },
           };
-        }else{
+        } else {
           return acc;
         }
 
@@ -84,8 +84,7 @@ function UserDetails({ initialValues, handleFormSubmit }) {
 
     if (
       !Object.values(formValidation.errors).length && // errors object is empty
-      Object.values(formValidation.touched).length ===
-      Object.values(values).length && // all fields were touched
+      Object.values(formValidation.touched).length > 0 && // all fields were touched
       Object.values(formValidation.touched).every(t => t === true) // every touched field is true
     ) {
       alert(JSON.stringify(values, null, 2));
