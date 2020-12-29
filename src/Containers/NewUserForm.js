@@ -1,5 +1,6 @@
 import React from 'react';
 import UserDetails from './UserDetails';
+import { useHistory } from 'react-router-dom';
 import {
     selectUsers,
     addUser
@@ -10,13 +11,15 @@ import { useSelector, useDispatch } from 'react-redux'
 export const initialValues = {
     email: '',
     name: '',
-    gender: '',
-    locations: ''
+    gender: 'select',
+    locations: '',
+    phone:''
 };
 
 const NewUserForm = () => {
     const users = useSelector(selectUsers);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleFormSubmit = (newUser) => {
         const id = users.length + 1;

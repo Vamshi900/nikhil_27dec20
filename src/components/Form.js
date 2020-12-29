@@ -53,7 +53,7 @@ function Form({
                 <div className="form-group">
                     <label htmlFor="phone">
                         Phone number *
-            <NumberInput onChange={handleChange} />
+            <NumberInput handleChange={handleChange} intialValue={values.phone} />
 
                     </label>
                 </div>
@@ -63,11 +63,13 @@ function Form({
                     <label htmlFor="Gender">
                         Gender *
                         <div>
-                            <select id="gender" name='gender' className="form-control btn btn-secondary dropdown-toggle" onChange={handleChange}
-                                onBlur={handleBlur}  >
-                                <option value="select">{values.gender !== '' ? values.gender : 'Select'}</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                            <select id="gender" name='gender' className="form-control btn btn-secondary dropdown-toggle" onChange={handleChange} onBlur={handleBlur}  >
+                                {
+                                    ['select', 'male', 'female'].map(
+                                        (optionVal) =>
+                                            <option value={optionVal} selected={optionVal === values.gender}>{optionVal}</option>
+                                    )
+                                }
                             </select>
                         </div>
 

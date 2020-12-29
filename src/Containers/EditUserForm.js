@@ -13,7 +13,6 @@ import { useHistory } from 'react-router-dom';
 const EditUserForm = ({ match }) => {
     const history = useHistory();
     const { params: { userId } } = match;
-    console.log(userId);
     const users = useSelector(selectUsers);
     const dispatch = useDispatch();
     const getUser = () => {
